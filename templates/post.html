@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Post Recipe
+{% endblock %}
+
+{% block main %}
+
+    <h1>Post Recipe</h1>
+
+    <form action="/post" method="post">
+
+        <div class="form-group" size="300">
+            <input style="width: 70%" class="form-control" name="title" placeholder="Title" type="text">
+        </div>
+
+        <div class="form-group" size="300">
+            <textarea rows="4" maxlength="300" style="width: 70%" class="form-control" placeholder="Introduction (300 characters max)" name="introduction"></textarea>
+        </div>
+
+        <div class="form-group" size="300">
+            <textarea rows="20" style="width: 70%" class="form-control" placeholder="Recipe" name="recipe"></textarea>
+        </div>
+
+        <div class="form-group" size="300">
+            <input style="width: 70%" class="form-control" name="image" placeholder="Main Image URL" type="text">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 30px">
+            <select style="width: 70%" name="meal" style="width: 30%; height: 20px; text-align: center;">
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="dessert">Dessert</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" style="width: 20%" type="submit">Post Recipe</button>
+
+    </form>
+
+{% endblock %}

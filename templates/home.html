@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    {% if alert != "" %}
+        <h5 style="background-color: green; color: white; padding-top: 20px; padding-bottom: 20px;">{{ alert }}</h5>
+    {% endif %}
+
+    <h1 style="margin-bottom: 10px;"><span style="color: green;">reci</span>share</h1>
+    <h4 style="margin-bottom: 40px;">Recipes know no borders.</h4>
+
+    <p>Home-cooked meals have a reputation for being bland and uninteresting. We spend so much money going to restaurants to eat food that can only be cooked by professionals, or so we say to ourselves. Delicious food is not bound to specific kitchens, but to great recipes. We collect the best recipes from all corners of the world so that you too can make dishes that amaze.<br><br>In the words of the late Chef Gusteau,<br><h5><b>"Anyone can cook."</b></h5></p>
+
+    <hr style="margin-bottom: 20px;">
+
+    <div class="row">
+        <div class="column">
+            <h5 style="margin-bottom: 20px;">Search hundreds of recipes</h5>
+            <form action="/search" method="post">
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <input autocomplete="off" autofocus class="form-control" name="term" placeholder="Search recipes" type="text" style="width: 50%;">
+                </div>
+                <button class="btn btn-primary" type="submit" style="width: 20%">Search</button>
+            </form>
+        </div>
+        <div class="column">
+            <h5 style="margin-bottom: 40px;">Post your own recipe</h5>
+            <a href="/post"><button class="btn btn-primary" style="width: 50%">Post</button></a>
+        </div>
+    </div>
+
+{% endblock %}

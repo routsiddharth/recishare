@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+    <h1>search <span style="color: green; margin-bottom: 50px;">reci</span>share</h1>
+
+    <h5 style="margin-bottom: 20px;">Search our ever growing database of recipes</h5>
+
+    <form action="/search" method="post">
+        <div class="form-group" style="margin-bottom: 30px;">
+            <input autocomplete="off" autofocus class="form-control" name="term" placeholder="Search recipes" type="text" style="width: 50%;">
+        </div>
+        <button class="btn btn-primary" type="submit" style="width: 20%">Search</button>
+    </form>
+
+    <hr style="margin-bottom: 30px; margin-top: 30px;">
+
+    <h5 style="margin-bottom: 20px;">Unsure what to eat? Select a meal and we'll give you a random recipe</h5>
+
+    <form action="/viewpost" method="post">
+        <div class="form-group" style="margin-bottom: 30px">
+            <select name="meal" style="width: 50%; height: 20px; text-align: center;">
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="dessert">Dessert</option>
+            </select>
+        </div>
+        <input type="hidden" name="form" value="random">
+        <button class="btn btn-primary" type="submit" style="width: 20%;">Search</button>
+    </form>
+
+    <hr style="margin-bottom: 30px; margin-top: 30px;">
+
+    <h5 style="margin-bottom: 20px;">Search for a specific recipe using a unique code!</h5>
+
+    <form action="/viewpost" method="post">
+        <div class="form-group" style="margin-bottom: 30px;">
+            <input autocomplete="off" autofocus class="form-control" name="code" placeholder="Search by Recipe Code" type="text" style="width: 50%;">
+        </div>
+        <input type="hidden" name="form" value="code">
+        <button class="btn btn-primary" type="submit" style="width: 20%">Search</button>
+    </form>
+{% endblock %}

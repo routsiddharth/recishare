@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results - {{ query }}
+{% endblock %}
+
+{% block main %}
+
+    <h3>Search Results - {{ query }}</h3>
+
+    {% if recipes == [] %}
+        <h4>Sorry, but no recipes were found for your given search term. Try again?</h4>
+    {% else %}
+        {% for recipe in recipes %}
+            <form action="/viewpost" method="post">
+                <input type="hidden" name="form" value="code">
+                <input type="hidden" name="code" value="{{ recipe.url }}">
+                <button type="submit" style="background-color: #FFFFFF; border: none;">
+                    <div class="resultblock row">
+                        <div class="column">
+                            <img src={{ recipe.image }}>
+                        </div>
+                        <div class="column" style="text-align: left;">
+                            <h4>{{ recipe.title }}</h3>
+                            <h6>by {{ recipe.username }}</h6>
+                            {% for line in recipe.introduction %}
+                                <p>{{ line }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </button>
+            </form>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
