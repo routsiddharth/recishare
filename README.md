@@ -31,24 +31,68 @@ You can search all the recipes in our database by using keywords, the recipe's u
 
 You can also rate recipes on a 10 point scale. When viewing recipes, the average of all reviews of that recipe is displayed. 
 
-## How I built it
+## File descriptions
 
-I built recishare over a period of 28 hours, using Python and the skills I learnt from online courses. In addition to vanilla Python, I used Flask for the UI and SQL for the backend. To connect the database to my program, I used cs50's inbuilt sqlite3 library. The UI was the first thing I built, followed by the backend and finally, I connected both together.
+### ```static/styles.css```
 
-## Challenges I ran into
+ - Contains all the custom CSS for the project
 
-I had never used SQL in conjunction with full-fledged Python application before, so a lot of my time was spent learning how to use it. I also did not have any experience with password management, so I had to learn how to safely deal with them and not compromise the security of users who sign up. Additionally, due to the scale of the project, there was a lot of data that needed to be stored in a format where they could reference one another and be linked to one another, so a lot of time was spent drawing out tables in a notebook.
+### ```templates/apology.html```
 
-As for problems, generating unique URLs for each recipe was an extremely challenging task, as I required JavaScript for that. To solve this, I gave each recipe a unique sharable code which could be shared among friends and family much more easily than a URL.
+ - Template for error page
+ - Takes 2 parameters
+    - code: Error code
+    - message: Custom error message
 
-## Accomplishments that I'm proud of
+### ```templates/home.html```
 
-In the end, I managed to build a fully functioning recipe sharing application, where you can post, search for, and view recipes. The backend links to the frontend perfectly, and the entire project maintains a consistent theme. I am also proud of the UI which was partially built using Bootstrap, and I am amazed at how beautiful the application looks with it. This is by far the largest project I have built, and I hope that I can continue this golden streak.
+ - Template for homepage
+ - Takes 1 optional parameter
+    - alert: Custom alert
+ - Has search form (sends POST to /search)
 
-## What I learned
+### ```templates/layout.html```
 
-In this project, I had to learn various different languages, frameworks and concepts, including Bootstrap, SQL, sqlite3, and password management. These were applied at a relatively basic level for this project, and I hope to use them further in future projects. Additionally, I learnt to solve problems creatively, like the aforementioned problem with the URLs and the (unconventional) solution I implemented.
+ - Basic layout for every page
+ - 2 blocks
+    - main: Main content of page
+    - title: Title of page (shown in head)
 
-## What's next for recishare
+### ```templates/login.html```
 
-I aim to improve the UI of recishare next, and implement a markdown system into posting recipes so that formatting recipes becomes possible. Furthermore, I would like to implement reviews into recipes, so that people can leave deeper and more specific comments on the recipes.
+ - Layout for login page
+ - Has login form (sends POST to /login)
+
+### ```templates/home.html```
+
+ - Layout for new post page
+ - Has new post form (sends POST to /post)
+
+### ```templates/register.html```
+
+ - Layout for register page
+ - Has register form (sends POST to /register)
+
+### ```templates/search.html```
+
+ - Layout for search page
+ - Has search by keyword form (sends POST to /search)
+ - Has random recipe form (sends POST to /viewpost)
+ - Has search by code form (sends POST to /viewpost)
+
+### ```templates/search_results.html```
+
+ - Layout for search results page once form is submitted to /search via POST
+ - Takes 2 parameters
+    - query: Search query
+    - recipes: Results from query as got from ```recipes.db```
+ - Has view post forms (sends POST to /viewpost) for each search result
+
+### ```templates/viewpost.html```
+
+ - Layout for viewing a post
+ - Has review recipe form (sends POST to /review)
+
+## What's next?
+
+I am improving the UI of recishare and trying to make it stand out, making it unique. So far, almost all of my CSS has been built using Bootstrap, and I would like to change that.
